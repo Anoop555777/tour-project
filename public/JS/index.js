@@ -3,6 +3,7 @@ import { login, logout } from './login';
 import { updateSettings } from './updateSettings';
 import { signin } from './signin';
 import { bookTour } from './stripe';
+import { showAlert } from './alert';
 
 // DOM ELEMENTS
 const loginForm = document.querySelector('.form--login');
@@ -69,3 +70,6 @@ if (bookBtn)
     const { tourId } = e.target.dataset;
     bookTour(tourId);
   });
+
+const alertMessage = document.querySelector('body').dataset.alertMessage;
+if (alertMessage) showAlert('success', 20);

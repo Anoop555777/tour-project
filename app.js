@@ -17,6 +17,8 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const bodyParser = require('body-parser');
+const bookingController = require('./Controller/bookingController');
 
 app.enable('trust proxy');
 
@@ -43,6 +45,13 @@ const limiter = rateLimit({
 });
 
 app.use('/api', limiter);
+
+// Stripe webhook, BEFORE body-parser, because stripe needs the body as stream
+app.post(
+  '/webhook-checkout',
+  bodyParser.raw({ type: 'application/json' }),
+  bookingController.webhookCheckout
+);
 
 //body parse req.body
 app.use(express.json({ limit: '10kb' }));
