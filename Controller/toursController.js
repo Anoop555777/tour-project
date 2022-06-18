@@ -191,14 +191,14 @@ exports.getAllStats = catchAsync(async (req, res, next) => {
     // },
   ]);
 
-  console.log(stats);
+
 
   res.status(200).json({ status: 'success', data: { stats } });
 });
 
 exports.getMontlyPlan = catchAsync(async (req, res, next) => {
   const year = req.params.year * 1;
-  console.log(year);
+
 
   const plans = await Tour.aggregate([
     {

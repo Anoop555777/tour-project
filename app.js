@@ -9,6 +9,7 @@ const reviewRoute = require('./routes/reviewRoutes');
 const bookingRoute = require('./routes/bookingRoutes');
 const appError = require('./utils/appError');
 const globalError = require('./Controller/errorController');
+const compression = require('compression');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
@@ -76,6 +77,7 @@ app.use(express.static(`${__dirname}/public`));
 //   console.log('its a middleware');
 //   next();
 // });
+app.use(compression());
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
