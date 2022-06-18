@@ -10,10 +10,11 @@ const app = require('./app');
 const DB = process.env.DATABASE;
 
 mongoose
-  .connect(DB, {
+  .connect(`${DB}`, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
+    useUnifiedTopology: true,
   })
   .then((connect) => console.log('DataBase connected successfully'));
 
