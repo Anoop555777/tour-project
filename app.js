@@ -11,7 +11,7 @@ const appError = require('./utils/appError');
 const globalError = require('./Controller/errorController');
 const compression = require('compression');
 const rateLimit = require('express-rate-limit');
-const helmet = require('helmet');
+// const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
@@ -30,7 +30,7 @@ app.use(cors());
 
 app.options('*', cors());
 //set security http headers
-app.use(helmet());
+// app.use(helmet());
 
 //Developmrnt logging
 if (process.env.NODE_ENV === 'development') {
