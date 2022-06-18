@@ -1,0 +1,19 @@
+extends base
+
+block content
+  main.main
+    .login-form
+      h2.heading-secondary.ma-bt-lg Signin to your account
+      form.form.form--signin
+        .form__group
+          label.form__label(for='name') name
+          input#name.form__input(type='text', placeholder='your name', required)
+          label.form__label(for='email') Email address
+          input#emailsignin.form__input(type='email', placeholder='you@example.com', required)
+        .form__group.ma-bt-md
+          label.form__label(for='password') Password
+          input#passwordsignin.form__input(type='password', placeholder='••••••••', required, minlength='8')
+          label.form__label(for='Confirmpassword') Confirm Password
+          input#Confirmpassword.form__input(type='password', placeholder='••••••••', required, minlength='8')
+        .form__group
+          button.btn.btn--green Sign in
