@@ -16,10 +16,17 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
+
+app.enable('trust proxy');
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 //Middleware
+
+app.use(cors());
+
+app.options('*', cors());
 //set security http headers
 app.use(helmet());
 
