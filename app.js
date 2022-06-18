@@ -10,7 +10,7 @@ const bookingRoute = require('./routes/bookingRoutes');
 const appError = require('./utils/appError');
 const globalError = require('./Controller/errorController');
 const rateLimit = require('express-rate-limit');
-//const helmet = require('helmet');
+const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
@@ -20,7 +20,7 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 //Middleware
 //set security http headers
-//app.use(helmet());
+app.use(helmet());
 
 //Developmrnt logging
 if (process.env.NODE_ENV === 'development') {
