@@ -30,9 +30,10 @@ const connectDB = async () => {
 
 //4 router listening
 const port = process.env.PORT || 3000;
+let server;
 
 connectDB().then(() => {
-  app.listen(port, () => {
+  server = app.listen(port, () => {
     console.log('application is running in port 8000');
   });
 });
