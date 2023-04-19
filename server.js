@@ -12,19 +12,29 @@ const DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD
 );
 
-mongoose
-  .connect(DB, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-  })
-  .then((connect) => console.log('DataBase connected successfully'));
+const connectDB = async () => {
+  try {
+    await mongoose.connect(DB, {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+      useUnifiedTopology: true,
+    });
+
+    console.log('Connect to database successfull');
+  } catch (err) {
+    console.log(`connection failed ${err}`);
+    process.exit(1);
+  }
+};
 
 //4 router listening
 const port = process.env.PORT || 3000;
-const server = app.listen(port, () => {
-  console.log('app running on port 3000');
+
+connectDB().then(() => {
+  app.listen(port, () => {
+    console.log('application is running in port 8000');
+  });
 });
 
 process.on('unhandledRejection', (err) => {
