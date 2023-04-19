@@ -9,7 +9,7 @@
     "start:prod": "NODE_ENV=production nodemon server.js",
     "debug": "ndb server.js",
     "watch:js": "parcel watch ./public/JS/index.js --out-dir ./public/JS --out-file bundle.js",
-    "build:js": "parcel build ./public/JS/index.js --out-dir ./public/JS --out-file bundle.js"
+    "build": "parcel build ./public/JS/index.js --out-dir ./public/JS --out-file bundle.js"
   },
   "author": "anoop singh",
   "license": "ISC",
